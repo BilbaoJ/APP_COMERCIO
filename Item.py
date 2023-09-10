@@ -1,3 +1,6 @@
+import Producto
+
+
 class Item:
 
     def __init__(self, producto, cantidad):
@@ -7,10 +10,10 @@ class Item:
     def calcular_total(self):
         manejador_reglas = ManejadorReglas()
         if self.producto.codigo_sku.startswith("EA"):
-            manejador_reglas.crear_regla(ReglaNormal())
+            manejador_reglas.set_regla(ReglaNormal())
         elif self.producto.codigo_sku.startswith("WE"):
-            manejador_reglas.crear_regla(ReglaPeso())
+            manejador_reglas.set_regla(ReglaPeso())
         elif self.producto.codigo_sku.startswith("SP"):
-            manejador_reglas.crear_regla(ReglaEspecial())
+            manejador_reglas.set_regla(ReglaEspecial())
 
-        return 0
+        return manejador_reglas.ejecutar_regla(self.cantidad, self.producto.precio_unitario)
