@@ -1,4 +1,8 @@
 import Producto
+from ManejadorReglas import ManejadorReglas
+from ReglaEspecial import ReglaEspecial
+from ReglaNormal import ReglaNormal
+from ReglaPeso import ReglaPeso
 
 
 class Item:

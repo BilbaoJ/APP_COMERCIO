@@ -6,5 +6,5 @@ class ManejadorReglas:
     def set_regla(self, regla):
         self.__regla = regla
     
-    def ejecutar_regla(cantidad, precio):
+    def ejecutar_regla(self, cantidad, precio):
         return self.__regla.calcular_total(cantidad, precio)
