@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white flex flex-col justify-center items-center">
+    <div class="bg-white flex flex-col justify-center items-center shadow-md rounded-lg">
         <button @click="mostrarDetalle">
             <img src="../static/box.png" alt="Producto" class="w-40 h-40">
             <h2 class="text-lg font-semibold text-black">{{ props.producto.nombre }}</h2>
@@ -14,7 +14,7 @@ const props = defineProps({
   producto: { type: Object, required: true }
 });
 
-var detalle = ref(false);
+const detalle = ref(false);
 
 const mostrarDetalle = () => {
     detalle.value = true;
