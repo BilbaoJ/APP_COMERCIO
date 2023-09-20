@@ -8,4 +8,8 @@ export default class ReglaPeso implements ReglaPrecio{
         return gramos * precio;
     }
 
+    aplica(sku:string):boolean{
+        return sku.startsWith("WE")
+    }
+
 }

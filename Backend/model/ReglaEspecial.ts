@@ -12,5 +12,8 @@ export default class ReglaEspecial implements ReglaPrecio{
         return precionNormal*(1 - descuentoAplicado);
     }
 
+    aplica(sku:string):boolean{
+        return sku.startsWith("SP")
+    }
 
 }

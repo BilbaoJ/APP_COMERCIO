@@ -4,25 +4,13 @@ import ReglaPeso from "./ReglaPeso";
 import ReglaPrecio from "./ReglaPrecio";
 
 export default class ManejadorReglas{
-    private regla: ReglaPrecio | undefined;
+    private regla: ReglaPrecio[];
 
     constructor(){
-        this.regla = undefined;
+        this.regla = [new ReglaNormal(), new ReglaPeso(), new ReglaEspecial()];
     }
 
     public ejecutarRegla(cantidad:number, precio:number, sku:string): number | undefined{
-        const primerasLetras = sku.substring(0,2);
-        switch(primerasLetras){
-            case "EA":
-                this.regla = new ReglaNormal()
-                break;
-            case "WE":
-                this.regla = new ReglaPeso()
-                break;
-            case "SP":
-                this.regla = new ReglaEspecial()
-                break
-        }
-        return this.regla?.calcularTotal(cantidad, precio);
+        return this.regla.filter(regla => regla.aplica(sku) === true)[0].calcularTotal(cantidad, precio)
     }
 }
