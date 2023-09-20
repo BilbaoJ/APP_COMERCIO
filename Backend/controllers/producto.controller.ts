@@ -11,4 +11,8 @@ const terminarCompra = (req: Request, res: Response): Response => {
     return res.status(200).json()
 }
 
+const consultarProductos = (req: Request, res: Response): Response => {
+    
+}
+
 export default {terminarCompra}

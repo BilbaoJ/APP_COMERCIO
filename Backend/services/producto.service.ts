@@ -28,4 +28,9 @@ const obtenerTiendaDeBD = (): Tienda => {
     return new Tienda(productos, bdJson.totalVentas);
 };
 
+const obtenerProductosDeDB = (): Producto[] => {
+    const tienda: Tienda = obtenerTiendaDeBD()
+
+}
+
 export default {hacerCompraService}
