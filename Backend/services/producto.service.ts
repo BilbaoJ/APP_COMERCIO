@@ -29,8 +29,8 @@ const obtenerTiendaDeBD = (): Tienda => {
 };
 
 const obtenerProductosDeDB = (): Producto[] => {
-    const tienda: Tienda = obtenerTiendaDeBD()
-
+    const tienda: Tienda = obtenerTiendaDeBD();
+    return tienda.getProductos();
 }
 
-export default {hacerCompraService}
+export default {hacerCompraService, obtenerProductosDeDB}

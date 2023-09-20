@@ -3,6 +3,7 @@ import Item from "../model/Item";
 import CompraDTO from "./dtos/CompraDTO"
 import compraDTO2Item from "./factories/CompraFactory"
 import productoService from "../services/producto.service"
+import Producto from "../model/Producto";
 
 const terminarCompra = (req: Request, res: Response): Response => {
     const compraDTO: CompraDTO = req.body;
@@ -12,7 +13,8 @@ const terminarCompra = (req: Request, res: Response): Response => {
 }
 
 const consultarProductos = (req: Request, res: Response): Response => {
-    
+    const productos: Producto[] = productoService.obtenerProductosDeDB();
+    return res.status(200).json(productos)
 }
 
-export default {terminarCompra}
+export default {terminarCompra, consultarProductos}
