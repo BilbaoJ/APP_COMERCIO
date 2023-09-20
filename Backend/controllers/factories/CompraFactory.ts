@@ -19,4 +19,14 @@ const productoDTO2Producto = (productoDTO: ProductoDTO): Producto => {
     )
 }
 
-export default compraDTO2Item
+const producto2ProductDTO = (producto: Producto): ProductoDTO => {
+    return {
+        sku: producto.sku,
+        nombre: producto.nombre,
+        descripcion: producto.descripcion,
+        unidades_disponibles: producto.unidadesDisponibles,
+        precio_unitario: producto.precioUnitario
+    }
+}
+
+export default {compraDTO2Item, producto2ProductDTO}
