@@ -1,6 +1,6 @@
 import Producto from './Producto.model';
 
-export interface Item{
+export default interface Item{
     producto: Producto,
     cantidad_compra: number
 }
