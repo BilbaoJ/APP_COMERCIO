@@ -12,10 +12,10 @@ const hacerCompraService = (itemsComprados: Item[], totalCompra: number) => {
         const productoComprado = item.getProducto()
         tienda.restarUnidadesDeProducto(productoComprado.sku, item.getCantidad());
         tienda.sumarVenta(totalCompra);
-        const numeroEspacios = 2;
-        const tiendaActualizada = JSON.stringify(tienda, null, numeroEspacios);
-        fs.writeFileSync('./BD/tienda.json', tiendaActualizada, 'utf-8');
     })
+    const numeroEspacios = 2;
+    const tiendaActualizada = JSON.stringify(tienda, null, numeroEspacios);
+    fs.writeFileSync('./BD/tienda.json', tiendaActualizada, 'utf-8');
 };
 
 const obtenerProductosDeDB = (): Producto[] => {
@@ -23,8 +23,8 @@ const obtenerProductosDeDB = (): Producto[] => {
     return tienda.getProductos();
 }
 
-const calcularPrecioService = (item: Item):number | undefined => {
-    return item.calcularTotal()
+const calcularPrecioService = (item: Item):(number | undefined) => {
+    return item.calcularTotal();
 }
 
 const obtenerTiendaDeBD = (): Tienda => {

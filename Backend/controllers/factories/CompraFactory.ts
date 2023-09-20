@@ -2,6 +2,7 @@ import Item from "../../model/Item";
 import Producto from "../../model/Producto";
 import ProductoDTO from "../dtos/ProductoDTO";
 import CompraDTO from "../dtos/CompraDTO";
+import ItemDTO from "../dtos/ItemDTO";
 
 const compraDTO2Item = (compraDTO: CompraDTO): Item[] => {
     return compraDTO.productos_carrito.map(
@@ -29,4 +30,11 @@ const producto2ProductDTO = (producto: Producto): ProductoDTO => {
     }
 }
 
-export default {compraDTO2Item, producto2ProductDTO}
+const itemDTO2Item = (itemDTO: ItemDTO): Item => {
+    return new Item(
+        productoDTO2Producto(itemDTO.producto),
+        itemDTO.cantidad_compra
+    )
+}
+
+export default {compraDTO2Item, producto2ProductDTO, itemDTO2Item}

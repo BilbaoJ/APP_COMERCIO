@@ -17,7 +17,7 @@ export default class Item{
         return this.cantidad;
     }
 
-    public calcularTotal(): number | undefined{
+    public calcularTotal(): (number | undefined){
         const manejadorReglas =  new ManejadorReglas();
         return manejadorReglas.ejecutarRegla(this.cantidad, this.producto.precioUnitario, this.producto.sku);
     }

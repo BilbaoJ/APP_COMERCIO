@@ -14,12 +14,10 @@ import ComercioStore from "../store/ComercioStore";
 import Producto from "../components/Producto.vue"
 const layout = "comercio";
 
-const obtenerProductos = () => {
+const obtenerProductos = async () => {
   try {
-    $fetch("http://localhost:5000/producto", {method: "GET"}).then((response:any) => {
-      response.json();
-      ComercioStore.actualizarProductos(response.data.productos);
-    });
+    const response:any = await $fetch("http://localhost:5000/producto", {method: "GET"});
+    ComercioStore.actualizarProductos(response);
   } catch (error) {
     console.log(error);
   }

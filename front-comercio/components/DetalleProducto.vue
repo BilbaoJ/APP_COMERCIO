@@ -57,12 +57,9 @@ const hayStock = () => {
 const agregarProducto = async () => {
     if(hayStock()) {
         try {
-            const data = {
-                item: item_compra_agregado.item
-            };
-            $fetch("http://localhost:5000/producto/precio", {method: "GET", body: data}).then((response:any) => {
-                response.json();
-                item_compra_agregado.precio_calculado = response.data.precio;
+            const data = item_compra_agregado.item;           
+            const response:number = await $fetch("http://localhost:5000/producto/precio", {method: "POST", body: data});
+            item_compra_agregado.precio_calculado = response;
                 ComercioStore.agregarProductoCarrito(item_compra_agregado);
                 ComercioStore.calcularPrecioCarrito();
                 swal.fire({
@@ -71,7 +68,6 @@ const agregarProducto = async () => {
                     timer: 1000,
                     showConfirmButton: false
                 });
-            });
         } catch (error) {
             console.log(error);
         }

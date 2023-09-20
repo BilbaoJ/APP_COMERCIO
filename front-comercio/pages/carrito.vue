@@ -39,7 +39,7 @@ const terminarCompra = async () =>{
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, finalizar'
-    }).then((result) => {
+    }).then(async (result) => {
         if (result.isConfirmed) {
             try {
                 const items = obtenerSoloItems(ComercioStore.productos_carrito);
@@ -47,9 +47,10 @@ const terminarCompra = async () =>{
                     productos_carrito: items,
                     total_compra: ComercioStore.total_compra
                 };
-                $fetch("http://localhost:5000/producto/venta", {method: "PUT", body: data}).then((response:any) => {
-                    response.json();
-                    if (response.status===200) {
+                const response:any = await $fetch("http://localhost:5000/producto/venta", {method: "PUT", body: data});
+                console.log(response);
+                
+                if (response.ok) {
                         swal.fire({
                             title:'Compra finalizada!',
                             text:'Gracias por su compra',
@@ -68,7 +69,6 @@ const terminarCompra = async () =>{
                             showConfirmButton: false
                         });
                     }
-                })
             } catch (error) {
                 console.log(error);
             }
