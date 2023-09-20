@@ -1,0 +1,27 @@
+{
+    "productos": [
+        {
+            "sku":"EA12345",
+            "nombre":"Computador",
+            "descripcion":"computador de alta gama",
+            "unidadesDisponibles":500,
+            "precioUnitario":2000000
+        },
+        {
+            "sku":"WE89475",
+            "nombre":"Libra de arroz",
+            "descripcion":"arroz integral",
+            "unidadesDisponibles":2000,
+            "precioUnitario":25
+        },
+        {
+            "sku":"SP03846",
+            "nombre":"Celular",
+            "descripcion":"xiaomi en descuento",
+            "unidadesDisponibles":200,
+            "precioUnitario":800000
+        }
+    ],
+
+    "totalVentas": 0
+}
