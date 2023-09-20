@@ -6,12 +6,16 @@ import * as fs from 'fs';
 const bd = fs.readFileSync('./BD/tienda.json', 'utf-8');
 const bdJson = JSON.parse(bd);
 
-const hacerCompraService = (item: Item, totalCompra: number) => {
+const hacerCompraService = (itemsComprados: Item[], totalCompra: number) => {
     const tienda = obtenerTiendaDeBD();
-    const productoComprado = item.getProducto();
-    tienda.restarUnidadesDeProducto(productoComprado.sku, item.getCantidad());
-    tienda.sumarVenta(totalCompra);
-    //Falta guardar en el Json
+    itemsComprados.map(item => {
+        const productoComprado = item.getProducto()
+        tienda.restarUnidadesDeProducto(productoComprado.sku, item.getCantidad());
+        tienda.sumarVenta(totalCompra);
+        const numeroEspacios = 2;
+        const tiendaActualizada = JSON.stringify(tienda, null, numeroEspacios);
+        fs.writeFileSync('./BD/tienda.json', tiendaActualizada, 'utf-8');
+    })
 };
 
 const obtenerTiendaDeBD = (): Tienda => {
