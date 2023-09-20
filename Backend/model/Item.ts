@@ -9,6 +9,14 @@ export default class Item{
         this.cantidad =  cantidad;
     }
 
+    public getProducto(): Producto{
+        return this.producto;
+    }
+
+    public getCantidad(): number{
+        return this.cantidad;
+    }
+
     public calcularTotal(): number | undefined{
         const manejadorReglas =  new ManejadorReglas();
         return manejadorReglas.ejecutarRegla(this.cantidad, this.producto.precioUnitario, this.producto.sku);
