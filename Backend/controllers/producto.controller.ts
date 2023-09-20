@@ -17,4 +17,10 @@ const consultarProductos = (req: Request, res: Response): Response => {
     return res.status(200).json(productos)
 }
 
-export default {terminarCompra, consultarProductos}
+const calcularPrecio = (req: Request, res:Response) => {
+    const item: Item = req.body;
+    const precioCalculado = productoService.calcularPrecioService(item);
+    return res.status(200).json(precioCalculado);
+}
+
+export default {terminarCompra, consultarProductos, calcularPrecio}

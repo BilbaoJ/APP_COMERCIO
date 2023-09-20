@@ -18,6 +18,15 @@ const hacerCompraService = (itemsComprados: Item[], totalCompra: number) => {
     })
 };
 
+const obtenerProductosDeDB = (): Producto[] => {
+    const tienda: Tienda = obtenerTiendaDeBD();
+    return tienda.getProductos();
+}
+
+const calcularPrecioService = (item: Item):number | undefined => {
+    return item.calcularTotal()
+}
+
 const obtenerTiendaDeBD = (): Tienda => {
     const productos: Producto[] = bdJson.productos.map((producto:any) => 
     new Producto(producto.sku, 
@@ -28,9 +37,6 @@ const obtenerTiendaDeBD = (): Tienda => {
     return new Tienda(productos, bdJson.totalVentas);
 };
 
-const obtenerProductosDeDB = (): Producto[] => {
-    const tienda: Tienda = obtenerTiendaDeBD();
-    return tienda.getProductos();
-}
 
-export default {hacerCompraService, obtenerProductosDeDB}
+
+export default {hacerCompraService, obtenerProductosDeDB, calcularPrecioService}
